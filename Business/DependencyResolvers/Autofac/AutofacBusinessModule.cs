@@ -27,13 +27,13 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<BlogManager>().As<IBlogService>().SingleInstance();
             builder.RegisterType<EFBlogDAL>().As<IBlogDAL>().SingleInstance();
 
-            builder.RegisterType<CertificateImageManager>().As<ICertificateService>().SingleInstance();
+            builder.RegisterType<CertificateImageManager>().As<ICertificateImageService>().SingleInstance();
             builder.RegisterType<EFCertificateImageDAL>().As<ICertificateImageDAL>().SingleInstance();
 
             builder.RegisterType<CertificateManager>().As<ICertificateService>().SingleInstance();
             builder.RegisterType<EFCertificateDAL>().As<ICertificateDAL>().SingleInstance();
 
-            builder.RegisterType<ProjectImageManager>().As<IProjectService>().SingleInstance();
+            builder.RegisterType<ProjectImageManager>().As<IProjectImageService>().SingleInstance();
             builder.RegisterType<EFProjectImageDAL>().As<IProjectImageDAL>().SingleInstance();
 
             builder.RegisterType<ProjectManager>().As<IProjectService>().SingleInstance();

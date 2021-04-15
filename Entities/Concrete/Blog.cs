@@ -11,6 +11,7 @@ namespace Entities.Concrete
         {
             CreatedAt = DateTime.Now;
             IsActive = true;
+            PublishedDate = DateTime.Now;
         }
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }

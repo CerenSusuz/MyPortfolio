@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Certificate certificate)
         {
             var result = _certificateService.Delete(certificate);
@@ -41,7 +41,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update(Certificate certificate)
         {
             var result = _certificateService.Update(certificate);

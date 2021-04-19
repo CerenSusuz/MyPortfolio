@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(int id)
         {
             var certificateImage = _certificateImageService.Get(id).Data;
@@ -43,7 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm(Name = ("Id"))] int Id)
         {
             var certificateImage = _certificateImageService.Get(Id).Data;
@@ -78,7 +78,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getimagesbycertificateid")]
-        public IActionResult GetImagesByBlogId(int certificateId)
+        public IActionResult GetImagesByCertificateId(int certificateId)
         {
             var result = _certificateImageService.GetImagesByCertificateId(certificateId);
             if (result.Success)

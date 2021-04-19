@@ -25,7 +25,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Blog blog)
         {
             var result = _blogService.Delete(blog);
@@ -36,7 +36,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update(Blog blog)
         {
             var result = _blogService.Update(blog);

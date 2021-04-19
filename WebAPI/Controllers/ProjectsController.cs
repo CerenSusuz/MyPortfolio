@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Project project)
         {
             var result = _projectService.Delete(project);
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update(Project project)
         {
             var result = _projectService.Update(project);

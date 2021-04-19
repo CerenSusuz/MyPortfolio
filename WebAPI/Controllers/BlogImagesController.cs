@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpDelete("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(int id)
         {
             var blogImage = _blogImageService.Get(id).Data;
@@ -42,7 +42,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm(Name = ("Id"))] int Id)
         {
             var blogImage = _blogImageService.Get(Id).Data;

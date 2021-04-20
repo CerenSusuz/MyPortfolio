@@ -16,7 +16,6 @@ namespace Core.Entities.Concrete
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public bool? IsDeleted { get; set; }
-        public bool? IsUpdated { get; set; }
         public bool IsActive { get; set; }
         public int UserId { get; set; }
         public int OperationClaimId { get; set; }

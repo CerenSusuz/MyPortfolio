@@ -62,10 +62,6 @@ namespace Business.Concrete
             return new SuccessDataResult<Blog>(_blogDAL.Get(b => b.Id == id));
         }
 
-        [CacheAspect]
-        public IDataResult<Blog> GetBySubjectId(int subjectId)
-        {
-            return new SuccessDataResult<Blog>(_blogDAL.Get(b => b.SubjectId == subjectId));
-        }
+
     }
 }

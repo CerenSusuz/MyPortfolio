@@ -68,9 +68,6 @@ namespace DataAccess.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool?>("IsUpdated")
-                        .HasColumnType("bit");
-
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -105,9 +102,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("IsUpdated")
                         .HasColumnType("bit");
 
                     b.Property<int>("OperationClaimId")
@@ -148,9 +142,6 @@ namespace DataAccess.Migrations
 
                     b.Property<DateTime>("PublishedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("SubjectId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
@@ -281,6 +272,9 @@ namespace DataAccess.Migrations
                     b.Property<bool?>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Link")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
@@ -290,66 +284,6 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.ProjectImage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImagePath")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProjectImages");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.Subject", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool?>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Subjects");
                 });
 #pragma warning restore 612, 618
         }

@@ -33,8 +33,6 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CertificateManager>().As<ICertificateService>().SingleInstance();
             builder.RegisterType<EFCertificateDAL>().As<ICertificateDAL>().SingleInstance();
 
-            builder.RegisterType<ProjectImageManager>().As<IProjectImageService>().SingleInstance();
-            builder.RegisterType<EFProjectImageDAL>().As<IProjectImageDAL>().SingleInstance();
 
             builder.RegisterType<ProjectManager>().As<IProjectService>().SingleInstance();
             builder.RegisterType<EFProjectDAL>().As<IProjectDAL>().SingleInstance();

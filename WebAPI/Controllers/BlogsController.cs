@@ -69,16 +69,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbysubject")]
-        public IActionResult GetBySubjectId(int subjectId)
-        {
-            var result = _blogService.GetBySubjectId(subjectId);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result.Message);
-        }
 
     }
 }

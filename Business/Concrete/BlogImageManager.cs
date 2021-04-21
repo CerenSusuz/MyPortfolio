@@ -102,7 +102,7 @@ namespace Business.Concrete
         private IResult CheckImageLimitExceeded(int blogId)
         {
             var blogImageCount = _blogImageDAL.GetAll(b => b.BlogId == blogId).Count;
-            if (blogImageCount >= 3)
+            if (blogImageCount >= 5)
             {
                 return new ErrorResult(Messages.ImageLimitExceeded);
             }

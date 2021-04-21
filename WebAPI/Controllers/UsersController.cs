@@ -86,7 +86,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPut("user/edit")]
+        [HttpPost("user/edit")]
         public IActionResult EditProfile(UserForUpdateDto user)
         {
             var result = _userService.EditProfile(user);

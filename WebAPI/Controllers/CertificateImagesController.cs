@@ -32,9 +32,8 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(CertificateImage certificateImage)
         {
-            var certificateImage = _certificateImageService.Get(id).Data;
             var result = _certificateImageService.Delete(certificateImage);
             if (result.Success)
             {

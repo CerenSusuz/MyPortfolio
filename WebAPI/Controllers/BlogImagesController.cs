@@ -31,10 +31,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(BlogImage image)
         {
-            var blogImage = _blogImageService.Get(id).Data;
-            var result = _blogImageService.Delete(blogImage);
+            var result = _blogImageService.Delete(image);
             if (result.Success)
             {
                 return Ok(result);

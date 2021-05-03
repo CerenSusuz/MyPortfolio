@@ -40,6 +40,11 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
             builder.RegisterType<EFUserDAL>().As<IUserDAL>().SingleInstance();
 
+            builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance();
+            builder.RegisterType<EFCommentDAL>().As<ICommentDAL>().SingleInstance();
+
+            builder.RegisterType<SubjectManager>().As<ISubjectService>().SingleInstance();
+            builder.RegisterType<EFSubjectDAL>().As<ISubjectDAL>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

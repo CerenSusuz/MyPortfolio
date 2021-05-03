@@ -43,7 +43,7 @@ namespace Business.Concrete
 
         }
 
-        public IResult EditProfile(UserForUpdateDto user)
+        public IResult EditProfile(UserForUpdateDeleteDto user)
         {
             byte[] passwordHash;
             byte[] passwordSalt;
@@ -65,9 +65,25 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IResult Delete(User user)
+        public IResult Delete(UserForUpdateDeleteDto user)
         {
-            _userDAL.Delete(user);
+            byte[] passwordHash;
+            byte[] passwordSalt;
+
+            HashingHelper.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
+
+            var userInfo = new User()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+
+            _userDAL.Delete(userInfo);
             return new SuccessResult();
         }
 

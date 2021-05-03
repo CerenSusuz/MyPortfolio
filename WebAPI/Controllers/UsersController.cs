@@ -53,8 +53,8 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpDelete("delete")]
-        public IActionResult Delete(User user)
+        [HttpPost("delete")]
+        public IActionResult Delete(UserForUpdateDeleteDto user)
         {
             var result = _userService.Delete(user);
             if (result.Success)
@@ -64,7 +64,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPut("update")]
+        [HttpPost("update")]
         public IActionResult Update(User user)
         {
             var result = _userService.Update(user);
@@ -76,7 +76,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getbymail")]
-        public IActionResult GeyByMail(string email)
+        public IActionResult GetByMail(string email)
         {
             var result = _userService.GetByMail(email);
             if (result.Success)
@@ -86,8 +86,19 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpPost("getclaims")]
+        public IActionResult GetClaims(User user)
+        {
+            var result = _userService.GetClaims(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
         [HttpPost("user/edit")]
-        public IActionResult EditProfile(UserForUpdateDto user)
+        public IActionResult EditProfile(UserForUpdateDeleteDto user)
         {
             var result = _userService.EditProfile(user);
             if (result.Success)

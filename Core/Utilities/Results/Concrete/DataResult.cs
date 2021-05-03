@@ -16,13 +16,7 @@ namespace Core.Utilities.Results.Concrete
         {
             Data = data;
         }
-        public DataResult(TEntity data,bool success,string message,List<OperationClaim> claims) : base(success, message)
-        {
-            Data = data;
-            Claims = claims;
-        }
         public TEntity Data { get; }
 
-        public List<OperationClaim> Claims { get; }
     }
 }

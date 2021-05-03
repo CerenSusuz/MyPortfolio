@@ -62,6 +62,9 @@ namespace Business.Concrete
             return new SuccessDataResult<Blog>(_blogDAL.Get(b => b.Id == id));
         }
 
-
+        public IDataResult<List<Blog>> GetBySubjectId(int id)
+        {
+            return new SuccessDataResult<List<Blog>>(_blogDAL.GetAll(b => b.SubjectId == id));
+        }
     }
 }

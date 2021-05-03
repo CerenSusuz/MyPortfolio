@@ -24,10 +24,6 @@ namespace Core.Utilities.Results.Concrete
 
         }
 
-        public SuccessDataResult(TEntity data,string message,List<OperationClaim> claims):base(data,true,message,claims)
-        {
-
-        }
 
     }
 }

@@ -11,17 +11,14 @@ namespace Entities.Concrete
         {
             CreatedAt = DateTime.Now;
             IsActive = true;
-            Date = DateTime.Now;
         }
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
-        public bool? IsDeleted { get; set; }
         public bool IsActive { get; set; }
 
         public int BlogId { get; set; }
         public string ImagePath { get; set; }
-        public DateTime Date { get; set; }
  
     }
 }

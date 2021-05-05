@@ -8,9 +8,6 @@ using Core.Utilities.Security.JWT;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EF.DALs;
 using DataAccess.Concrete.Entity_Framework;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Business.DependencyResolvers.Autofac
 {
@@ -45,6 +42,9 @@ namespace Business.DependencyResolvers.Autofac
 
             builder.RegisterType<SubjectManager>().As<ISubjectService>().SingleInstance();
             builder.RegisterType<EFSubjectDAL>().As<ISubjectDAL>().SingleInstance();
+
+            builder.RegisterType<PictureManager>().As<IPictureService>().SingleInstance();
+            builder.RegisterType<EFPictureDAL>().As<IPictureDAL>().SingleInstance();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 

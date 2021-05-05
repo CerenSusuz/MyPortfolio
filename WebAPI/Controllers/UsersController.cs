@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("delete")]
-        public IActionResult Delete(UserForUpdateDeleteDto user)
+        public IActionResult Delete(User user)
         {
             var result = _userService.Delete(user);
             if (result.Success)
@@ -90,17 +90,6 @@ namespace WebAPI.Controllers
         public IActionResult GetClaims(User user)
         {
             var result = _userService.GetClaims(user);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-            return BadRequest(result);
-        }
-
-        [HttpPost("user/edit")]
-        public IActionResult EditProfile(UserForUpdateDeleteDto user)
-        {
-            var result = _userService.EditProfile(user);
             if (result.Success)
             {
                 return Ok(result);

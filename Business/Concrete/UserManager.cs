@@ -1,13 +1,16 @@
 ﻿using Business.Abstract;
 using Core.Entities.Concrete;
 using DataAccess.Abstract;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security.Hashing;
 using Entities.DTOs;
+using System.Net;
+using MailKit.Security;
+using MimeKit;
+using MimeKit.Text;
+using MailKit.Net.Smtp;
 
 namespace Business.Concrete
 {
@@ -40,50 +43,11 @@ namespace Business.Concrete
         {
             _userDAL.Update(user);
             return new SuccessResult();
-
         }
 
-        public IResult EditProfile(UserForUpdateDeleteDto user)
+        public IResult Delete(User user)
         {
-            byte[] passwordHash;
-            byte[] passwordSalt;
-            
-            HashingHelper.CreatePasswordHash(user.Password, out passwordHash,out passwordSalt);
-
-            var userInfo = new User()
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email= user.Email,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Status = true
-            };
-
-            _userDAL.Update(userInfo);
-            return new SuccessResult();
-        }
-
-        public IResult Delete(UserForUpdateDeleteDto user)
-        {
-            byte[] passwordHash;
-            byte[] passwordSalt;
-
-            HashingHelper.CreatePasswordHash(user.Password, out passwordHash, out passwordSalt);
-
-            var userInfo = new User()
-            {
-                Id = user.Id,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Email = user.Email,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                Status = true
-            };
-
-            _userDAL.Delete(userInfo);
+            _userDAL.Delete(user);
             return new SuccessResult();
         }
 
@@ -96,6 +60,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<User>(_userDAL.Get(u => u.Email == email));
         }
+
     }
 }
 

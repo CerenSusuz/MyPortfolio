@@ -21,5 +21,7 @@ namespace Business.Constants
         public static string AuthorizationDenied = "Authorization Denied";
 
         public static string ImageLimitExceeded = "Limit exceeded";
+
+        public static string PasswordChanged = "Password Changed";
     }
 }

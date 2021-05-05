@@ -24,5 +24,6 @@ namespace DataAccess.Concrete.EF.Context
         public DbSet<Project> Projects { get; set; }
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
     }
 }

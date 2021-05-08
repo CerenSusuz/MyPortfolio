@@ -128,9 +128,6 @@ namespace DataAccess.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("PublishedDate")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("SubjectId")
                         .HasColumnType("int");
 

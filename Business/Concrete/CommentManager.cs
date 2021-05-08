@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.BusinessAspect.Autofac;
+using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 using Core.Utilities.Results.Abstract;
@@ -24,6 +25,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin,user,moderator")]
         [CacheRemoveAspect("ICommentService.Get")]
+        [ValidationAspect(typeof(CommentValidator))]
         public IResult Add(Comment comment)
         {
             _commentDAL.Add(comment);
@@ -74,6 +76,7 @@ namespace Business.Concrete
 
         [SecuredOperation("admin,user,moderator")]
         [CacheRemoveAspect("ICommentService.Get")]
+        [ValidationAspect(typeof(CommentValidator))]
         public IResult Update(Comment comment)
         {
             _commentDAL.Update(comment);

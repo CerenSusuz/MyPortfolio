@@ -21,7 +21,7 @@ namespace Business.Concrete
 {
     public class CertificateImageManager : ICertificateImageService
     {
-        ICertificateImageDAL _certificateImageDAL;
+        readonly ICertificateImageDAL _certificateImageDAL;
 
         public CertificateImageManager(ICertificateImageDAL certificateImageDAL)
         {
@@ -62,7 +62,6 @@ namespace Business.Concrete
             }
             var oldPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) +_certificateImageDAL.Get(c => c.Id == certificateImage.Id).ImagePath;
             certificateImage.ImagePath = FileHelper.Update(oldPath, file);
-            certificateImage.Date = DateTime.Now;
             _certificateImageDAL.Update(certificateImage);
             return new SuccessResult();
         }
@@ -111,11 +110,14 @@ namespace Business.Concrete
                 var result = _certificateImageDAL.GetAll(c => c.CertificateId == id).Any();
                 if (!result)
                 {
-                    List<CertificateImage> certificateImage = new List<CertificateImage>();
-                    certificateImage.Add(new CertificateImage { 
-                        CertificateId = id, 
-                        ImagePath = path, 
-                        Date = DateTime.Now });
+                    List<CertificateImage> certificateImage = new List<CertificateImage>
+                    {
+                        new CertificateImage
+                        {
+                            CertificateId = id,
+                            ImagePath = path
+                        }
+                    };
                     return new SuccessDataResult<List<CertificateImage>>(certificateImage);
                 }
             }

@@ -21,7 +21,7 @@ namespace Business.Concrete
 {
     public class BlogImageManager : IBlogImageService
     {
-        IBlogImageDAL _blogImageDAL;
+        readonly IBlogImageDAL _blogImageDAL;
 
         public BlogImageManager(IBlogImageDAL blogImageDAL)
         {
@@ -66,7 +66,6 @@ namespace Business.Concrete
 
             var oldPath = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\wwwroot")) + _blogImageDAL.Get(p => p.Id == blogImage.Id).ImagePath;
             blogImage.ImagePath = FileHelper.Update(oldPath, file);
-            blogImage.Date = DateTime.Now;
             _blogImageDAL.Update(blogImage);
             return new SuccessResult();
         }
@@ -117,8 +116,10 @@ namespace Business.Concrete
                 var result = _blogImageDAL.GetAll(b => b.BlogId == id).Any();
                 if (!result)
                 {
-                    List<BlogImage> blogImage = new List<BlogImage>();
-                    blogImage.Add(new BlogImage { BlogId = id, ImagePath = path, Date = DateTime.Now });
+                    List<BlogImage> blogImage = new List<BlogImage>
+                    {
+                        new BlogImage { BlogId = id, ImagePath = path }
+                    };
                     return new SuccessDataResult<List<BlogImage>>(blogImage);
                 }
             }

@@ -6,7 +6,8 @@ using System.Text;
 namespace Entities.Concrete
 {
     public class Blog : IEntity
-    {
+    { 
+
         public Blog()
         {
             CreatedAt = DateTime.Now;
